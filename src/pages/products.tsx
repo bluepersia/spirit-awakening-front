@@ -37,7 +37,7 @@ export default function Products () : JSX.Element
                 {isLoading && <img src={imgSpinner}/>}
                 {error && <h3 className='error'>{error.message}</h3>}
                 {products && products.map (product => (
-                    <div className={styles.product} key={product.id}>
+                    <div className={styles.product} key={product._id}>
                         <div className={styles.productText}>
                             <h2 className={styles.productName}>{product.name}</h2>
                             <p className={styles.productSummary}>{product.summary}</p>
@@ -46,7 +46,7 @@ export default function Products () : JSX.Element
                     <div className={styles.btns}>
                         <p className={styles.productPrice}>€{product.price.toFixed(2)}</p>
                         <button className={styles.btn + ' btn-gold'}>Kaufen</button>
-                        <Link to={product.id} className={styles.btn + ' btn-gold'}>Mehr</Link>
+                        <Link to={product._id} className={styles.btn + ' btn-gold'}>Mehr</Link>
                     </div>
                     </div>
                 ))}

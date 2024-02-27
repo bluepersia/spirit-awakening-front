@@ -1,0 +1,11 @@
+.btn 
+{
+    text-decoration: none;
+    color: inherit;
+    padding: 1em 0;
+    display: block;
+}
+
+.btn span {
+    text-decoration: underline;
+}
