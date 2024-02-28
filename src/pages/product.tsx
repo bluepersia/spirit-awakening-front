@@ -7,11 +7,14 @@ import {Interweave} from 'interweave';
 import imgSpinner from '../img/ring-resize.svg';
 import { imgUrl } from '../util/url';
 import BackBtn from '../components/BackBtn';
+import { useContext } from 'react';
+import { AppContext } from '../App';
 
 export default function Product () : JSX.Element
 {
     const {id} = useParams ();
     const {data:product, isLoading, error} = useQuery({queryKey:['product'], queryFn: fetchProduct});
+    const {addToCart} = useContext (AppContext);
 
     async function fetchProduct () : Promise<IProduct>
     {
@@ -33,7 +36,7 @@ export default function Product () : JSX.Element
                     <img src={`${imgUrl}/${product.image}`} className={styles.img}/>
                     <Interweave className={styles.productDescription} content={product.descriptionHtml}/>
                     <p className={styles.productPrice}>€{product.price.toFixed(2)}</p>
-                    <button className={styles.btn + ' btn-gold'}>Kaufen</button>
+                    <button onClick={() => addToCart (product)} className={styles.btn + ' btn-gold'}>Kaufen</button>
                 </div>
             )}
         </main>

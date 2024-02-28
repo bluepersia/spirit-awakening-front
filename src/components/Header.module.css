@@ -17,3 +17,23 @@
     width: 100%;
 }
 
+
+
+.cart {
+    position: fixed;
+    right: 5%;
+    top: 5%;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+}
+
+.cartIcon {
+    font-size: 2rem;;
+}
+
+.cart_text {
+    margin-top: 0;
+}

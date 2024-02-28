@@ -4,11 +4,13 @@ import {useQuery} from '@tanstack/react-query';
 import imgSpinner from '../img/ring-resize.svg';
 import { apiUrl, imgUrl } from '../util/url';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { AppContext } from '../App';
 
 export default function Products () : JSX.Element
 {
     const {data:products, isLoading, error} = useQuery({queryKey:['products'], queryFn: fetchProducts});
-   
+    const {addToCart} = useContext (AppContext);
 
     async function fetchProducts () : Promise<IProduct[]>
     {
@@ -45,7 +47,7 @@ export default function Products () : JSX.Element
                         <img className={styles.productImg} src={`${imgUrl}/${product.image}`}/>
                     <div className={styles.btns}>
                         <p className={styles.productPrice}>€{product.price.toFixed(2)}</p>
-                        <button className={styles.btn + ' btn-gold'}>Kaufen</button>
+                        <button onClick={() => addToCart(product)} className={styles.btn + ' btn-gold'}>Kaufen</button>
                         <Link to={product._id} className={styles.btn + ' btn-gold'}>Mehr</Link>
                     </div>
                     </div>
