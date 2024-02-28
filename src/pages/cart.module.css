@@ -16,3 +16,10 @@
 .productImg {
     max-width: 200px;
 }
+
+.email {
+    font-family: inherit;
+    font-size: inherit;
+    padding: .75em 1.5em;
+    margin: 1em 0;
+}
